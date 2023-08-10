@@ -1,0 +1,29 @@
+.scoreboard {
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 0px 0px 10px #888;
+  border-radius: 10%;
+  width: 100%;
+  margin: 3rem auto;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.x-score {
+  color: var(--xRed);
+  width: 100%;
+  padding: 15px;
+}
+
+.o-score {
+  color: var(--oBlack);
+  width: 100%;
+  padding: 15px;
+}
+
+.tie-score {
+  color: cadetblue;
+  width: 100%;
+  padding: 15px;
+}
