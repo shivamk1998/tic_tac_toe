@@ -1,9 +1,11 @@
 import React from 'react';
 import './Box.css'
 
-function Box(){
+function Box({value, onClick, id}){
   return (
-    <div></div>
+   <button key={id} className={`box ${value==="X"?"x":"o"}`} onClick={onClick}>{value}</button>
+      
+    
   )
 }
 
