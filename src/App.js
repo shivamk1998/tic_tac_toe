@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Board from './components/Board/Board'
 import ScoreBoard from './components/ScoreBoard/ScoreBoard';
+import Modal from './components/Modal/Modal';
 
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null))
@@ -10,6 +11,7 @@ function App() {
   const [oScore, setOScore] = useState(0)
   const [tieScore, setTieScore] = useState(0)
   const [gameOver, setGameOver] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
 
 
@@ -58,7 +60,7 @@ function App() {
 
 
   function handleReset() {
-    setGameOver(gameOver)
+    setGameOver(false)
     setBoard(Array(9).fill(null))
 
 
@@ -85,10 +87,25 @@ function App() {
 
   return (
     <div className="App">
-      <ScoreBoard xScore={xScore} oScore={oScore} tieScore={tieScore} />
+      <ScoreBoard xScore={xScore} oScore={oScore} tieScore={tieScore} xPlaying={xPlaying}/>
       <Board board={board} onClick={gameOver === true ? handleReset : handleBoxClick} />
-      {/* <button onClick={handleReset}>Reset</button> */}
-      <button onClick={handlePlayAgain}>Start Over</button>
+      
+      <div className="buttonR">
+        <button onClick={handleReset}>Play Again</button>
+        <button onClick={handlePlayAgain}>Reset</button>
+      </div>
+
+      <button className="gameOver" onClick={() => setShowModal(!showModal)}>
+        Game Over
+      </button>
+
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        xScore={xScore}
+        oScore={oScore}
+        handlePlayAgain={handlePlayAgain}
+      />
 
     </div>
   );
